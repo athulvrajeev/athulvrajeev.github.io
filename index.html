@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Athul V. Rajeev</title>
+<meta name="description" content="Athul V. Rajeev — PhD researcher at IIT Hyderabad working on molecular dynamics, enhanced-sampling free-energy calculations and microfluidic transport for targeted drug delivery.">
+<meta name="author" content="Athul V. Rajeev">
+<meta property="og:title" content="Athul V. Rajeev — Molecular Simulation & Biotransport">
+<meta property="og:description" content="Molecular dynamics, enhanced sampling and microfluidic transport for targeted drug delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --ink:#1d232a; --muted:#5b6672; --line:#e4e2dc;
+  --accent:#0e6b6b; --accent-soft:#e3f1ef; --warm:#c2673a;
+  --shadow:0 1px 2px rgba(20,30,40,.05),0 6px 20px rgba(20,30,40,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12161a; --surface:#1a2026; --ink:#e7ebee; --muted:#9aa6b2; --line:#2a323a;
+    --accent:#5cc2b8; --accent-soft:#1c3533; --warm:#e09264;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12161a; --surface:#1a2026; --ink:#e7ebee; --muted:#9aa6b2; --line:#2a323a;
+  --accent:#5cc2b8; --accent-soft:#1c3533; --warm:#e09264;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.2;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0;border-top:1px solid var(--line)}
+.label{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.section-title{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:28px}
+
+/* nav */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:1.1rem;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+.nav ul a{color:var(--muted);font-size:.92rem;font-weight:500}
+.nav ul a:hover{color:var(--ink);text-decoration:none}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--ink);font:inherit;font-size:.9rem;cursor:pointer}
+@media (max-width:760px){
+  .menu-btn{display:block}
+  .nav ul{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:var(--surface);border-bottom:1px solid var(--line);padding:8px 20px}
+  .nav ul.open{display:flex}
+  .nav ul li a{display:block;padding:10px 0}
+}
+
+/* hero */
+.hero{padding:72px 0 64px;border-top:0}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,5.4vw,3.6rem);letter-spacing:-.01em}
+.hero .role{font-size:1.15rem;color:var(--muted);margin:12px 0 18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.tag{font-size:.8rem;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+.hero p.lead{font-size:1.06rem;max-width:56ch;margin:0 0 26px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:10px 18px;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.ghost{color:var(--accent)}
+.btn:hover{text-decoration:none;filter:brightness(1.05)}
+.status{margin-top:22px;font-size:.9rem;color:var(--muted)}
+.status b{color:var(--warm);font-weight:600}
+.photo{position:relative;justify-self:center;width:min(300px,70vw);aspect-ratio:1;border-radius:50%;overflow:hidden;background:linear-gradient(140deg,var(--accent) 0%,#2d4f6b 100%);box-shadow:var(--shadow)}
+.photo .initials{position:absolute;inset:0;display:grid;place-items:center;font-family:Fraunces,Georgia,serif;font-size:5rem;color:#fff;opacity:.92}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (max-width:760px){.hero-grid{grid-template-columns:1fr;gap:32px}.photo{order:-1;width:180px}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px}
+.about-grid p{margin:0 0 14px}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);align-self:start}
+.facts dl{margin:0;display:grid;gap:12px}
+.facts dt{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-weight:500}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+/* research cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+.card .num{font-family:Fraunces,Georgia,serif;color:var(--warm);font-size:1.1rem}
+.card h3{font-size:1.2rem;margin:6px 0 8px}
+.card p{margin:0;color:var(--muted)}
+.card .tools{margin-top:12px;font-size:.82rem;color:var(--ink)}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.thumb{position:relative;aspect-ratio:16/9;background:var(--accent-soft);overflow:hidden}
+.thumb svg{position:absolute;inset:0;width:100%;height:100%}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--surface)}
+.project .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.project h3{font-size:1.12rem}
+.project p{margin:0;color:var(--muted);font-size:.95rem}
+.project .meta{display:flex;flex-wrap:wrap;gap:6px}
+.project .more{margin-top:auto;padding-top:6px;font-weight:600;font-size:.92rem}
+@media (max-width:760px){.projects{grid-template-columns:1fr}}
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.pub{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px}
+.pub .t{font-weight:600}
+.pub .a{color:var(--muted);font-size:.92rem}
+.pub .v{font-size:.92rem}
+.pub .badge{display:inline-block;margin-left:6px;font-size:.72rem;padding:2px 8px;border-radius:999px;background:var(--warm);color:#fff;font-weight:600;vertical-align:2px}
+h3.sub{font-size:1.25rem;margin:36px 0 14px}
+
+/* timeline */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 22px 20px}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.tl .when{font-size:.82rem;color:var(--muted)}
+.tl .what{font-weight:600}
+.tl .where{font-size:.93rem}
+ul.plain{margin:0;padding-left:18px}
+ul.plain li{margin-bottom:8px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+
+/* cv + contact */
+.cv-box{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:var(--shadow)}
+.cv-box p{margin:0;max-width:60ch}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.links a{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-weight:500;font-size:.92rem}
+.links a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top">Athul V. Rajeev</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navList">Menu</button>
+    <ul id="navList">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="label">PhD Researcher · IIT Hyderabad</div>
+      <h1>Athul V. Rajeev</h1>
+      <div class="role">Molecular simulation and biotransport for targeted drug delivery</div>
+      <div class="tags">
+        <span class="tag">Molecular Dynamics</span>
+        <span class="tag">Enhanced Sampling &amp; Free Energy</span>
+        <span class="tag">Membrane Biophysics</span>
+        <span class="tag">Microfluidics &amp; CFD</span>
+      </div>
+      <p class="lead">I study how nanoparticles interact with and cross biological membranes, using all-atom molecular dynamics with adaptive biasing force and umbrella sampling, and continuum modelling of microfluidic transport in COMSOL.</p>
+      <div class="btns">
+        <a class="btn primary" href="#research">Explore my research</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+      <p class="status">PhD thesis submission: <b>December 2026</b> · Open to postdoctoral and faculty positions from 2027</p>
+    </div>
+    <div class="photo" aria-hidden="false">
+      <span class="initials">AR</span>
+      <!-- Add your photo as images/profile.jpg (square, at least 600×600 px) -->
+      <img src="images/profile.jpg" alt="Photo of Athul V. Rajeev" onerror="this.remove()">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="label">About me</div>
+    <h2 class="section-title">From thermal engineering to molecular biophysics</h2>
+    <div class="about-grid">
+      <div>
+        <p>I am a PhD research scholar at the Indian Institute of Technology Hyderabad, working with Dr. Harikrishnan N. Unni. My thesis, <em>“Multiscale Computational Modelling of Nanoparticle Transport and Interfacial Interactions for Targeted Drug Delivery”</em>, asks how surface chemistry and membrane composition decide whether a nanoparticle enters a healthy or a cancer cell.</p>
+        <p>At the molecular scale I run all-atom MD simulations in NAMD and GROMACS and compute free-energy profiles with adaptive biasing force and umbrella sampling, paying close attention to sampling and convergence. At the device scale I model flow and particle transport in microfluidic channels with COMSOL Multiphysics, and I have worked with experimental colleagues on microfluidic chips that led to two granted Indian patents.</p>
+        <p>I trained as a mechanical engineer (B.Tech, and M.Tech in Thermal Science), and I enjoy teaching thermodynamics, fluid mechanics, heat transfer and CFD.</p>
+      </div>
+      <aside class="facts">
+        <dl>
+          <div><dt>Current position</dt><dd>PhD Research Scholar (2021–present)</dd></div>
+          <div><dt>Institution</dt><dd>Indian Institute of Technology Hyderabad, India</dd></div>
+          <div><dt>Department</dt><dd>Biomedical Engineering</dd></div>
+          <div><dt>Research area</dt><dd>Computational biophysics, molecular simulation, biotransport</dd></div>
+          <div><dt>Thesis submission</dt><dd>December 2026</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <div class="label">Research interests</div>
+    <h2 class="section-title">What I work on</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="num">01</div>
+        <h3>Enhanced sampling &amp; free energy</h3>
+        <p>Steered MD to build pathways, then stratified multi-window adaptive biasing force and umbrella sampling to compute potentials of mean force, with systematic checks of sampling and convergence.</p>
+        <div class="tools">NAMD · Colvars · GROMACS · VMD · Python</div>
+      </article>
+      <article class="card">
+        <div class="num">02</div>
+        <h3>Nanoparticle–membrane interactions</h3>
+        <p>How bare and PEG-functionalised gold nanoparticles bind to and cross normal and cancer-mimicking lipid bilayers, and how coating and lipid composition change the energetics.</p>
+        <div class="tools">Lipid bilayers · membrane deformation · water pores · order parameters</div>
+      </article>
+      <article class="card">
+        <div class="num">03</div>
+        <h3>Membrane proteins</h3>
+        <p>Nanoparticle transport across membranes containing the TRPV1 ion channel, and how a protein-embedded membrane changes contacts and transport energetics.</p>
+        <div class="tools">TRPV1 · protein–membrane systems · contact analysis</div>
+      </article>
+      <article class="card">
+        <div class="num">04</div>
+        <h3>Microfluidics &amp; continuum transport</h3>
+        <p>Laminar flow, drag, Brownian motion and particle tracing in microscale geometries, linking device-scale transport with molecular-scale energetics.</p>
+        <div class="tools">COMSOL Multiphysics · ANSYS Fluent · microfluidic chip fabrication</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="label">Selected work</div>
+    <h2 class="section-title">Research projects</h2>
+    <div class="projects">
+
+      <article class="project">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" aria-hidden="true">
+            <rect style="fill:var(--accent-soft)" width="320" height="180"/>
+            <g style="fill:var(--accent)" opacity=".85">
+              <circle cx="20" cy="82" r="6"/><circle cx="44" cy="82" r="6"/><circle cx="68" cy="82" r="6"/><circle cx="92" cy="82" r="6"/><circle cx="116" cy="84" r="6"/><circle cx="140" cy="90" r="6"/><circle cx="180" cy="90" r="6"/><circle cx="204" cy="84" r="6"/><circle cx="228" cy="82" r="6"/><circle cx="252" cy="82" r="6"/><circle cx="276" cy="82" r="6"/><circle cx="300" cy="82" r="6"/>
+              <circle cx="20" cy="130" r="6"/><circle cx="44" cy="130" r="6"/><circle cx="68" cy="130" r="6"/><circle cx="92" cy="130" r="6"/><circle cx="116" cy="128" r="6"/><circle cx="140" cy="124" r="6"/><circle cx="180" cy="124" r="6"/><circle cx="204" cy="128" r="6"/><circle cx="228" cy="130" r="6"/><circle cx="252" cy="130" r="6"/><circle cx="276" cy="130" r="6"/><circle cx="300" cy="130" r="6"/>
+            </g>
+            <g style="stroke:var(--accent)" stroke-width="2" opacity=".45">
+              <path d="M20 88v14M44 88v14M68 88v14M92 88v14M116 90v12M204 90v12M228 88v14M252 88v14M276 88v14M300 88v14"/>
+              <path d="M20 110v14M44 110v14M68 110v14M92 110v14M116 110v12M204 110v12M228 110v14M252 110v14M276 110v14M300 110v14"/>
+            </g>
+            <circle style="fill:var(--warm)" cx="160" cy="58" r="20"/>
+            <g style="stroke:var(--warm)" stroke-width="2" fill="none" opacity=".7">
+              <path d="M160 38c-4-10 4-14 0-24"/><path d="M176 46c8-6 14 0 22-6"/><path d="M144 46c-8-6-14 0-22-6"/><path d="M178 66c10 2 12 10 22 10"/><path d="M142 66c-10 2-12 10-22 10"/>
+            </g>
+          </svg>
+          <!-- Optional figure: images/project1.png (16:9) -->
+          <img src="images/project1.png" alt="Gold nanoparticle approaching a lipid bilayer" onerror="this.remove()">
+        </div>
+        <div class="body">
+          <div class="meta"><span class="tag">ABF</span><span class="tag">Umbrella sampling</span><span class="tag">Lipid bilayers</span></div>
+          <h3>Nanoparticle translocation across normal and cancer-mimicking membranes</h3>
+          <p>Free-energy profiles for bare and surface-functionalised gold nanoparticles crossing normal and cancer-mimicking membranes, with analysis of the molecular contacts and membrane response behind the differences.</p>
+          <a class="more" href="https://doi.org/10.1039/D6CP01177B">Read the PCCP paper →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" aria-hidden="true">
+            <rect style="fill:var(--accent-soft)" width="320" height="180"/>
+            <rect style="fill:var(--accent)" x="0" y="70" width="320" height="56" opacity=".16"/>
+            <g style="fill:var(--accent)" opacity=".75">
+              <rect x="118" y="42" width="22" height="110" rx="11"/><rect x="146" y="36" width="22" height="122" rx="11"/>
+              <rect x="174" y="36" width="22" height="122" rx="11"/><rect x="202" y="42" width="22" height="110" rx="11"/>
+            </g>
+            <circle style="fill:var(--warm)" cx="171" cy="18" r="11"/>
+            <path style="stroke:var(--warm)" d="M171 32v14" stroke-width="3" stroke-dasharray="3 4"/>
+          </svg>
+          <img src="images/project2.png" alt="TRPV1 ion channel embedded in a membrane model" onerror="this.remove()">
+        </div>
+        <div class="body">
+          <div class="meta"><span class="tag">TRPV1</span><span class="tag">Membrane protein</span><span class="tag">MD</span></div>
+          <h3>TRPV1-mediated nanoparticle transport</h3>
+          <p>MD of nanoparticle transport across TRPV1 ion-channel-containing normal and cancer membrane models, with structural and transport-energy analysis.</p>
+          <a class="more" href="https://doi.org/10.1109/BIBE66822.2025.00032">Read the IEEE BIBE paper →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" aria-hidden="true">
+            <rect style="fill:var(--accent-soft)" width="320" height="180"/>
+            <path style="stroke:var(--accent)" d="M30 140 C80 140 90 60 140 60 S200 120 230 110 S270 50 295 45" fill="none" stroke-width="4"/>
+            <g style="fill:var(--warm)"><circle cx="70" cy="128" r="4"/><circle cx="110" cy="80" r="4"/><circle cx="150" cy="62" r="4"/><circle cx="190" cy="98" r="4"/><circle cx="230" cy="110" r="4"/><circle cx="270" cy="62" r="4"/></g>
+            <path style="stroke:var(--muted)" d="M30 20v130h270" fill="none" stroke-width="1.5" opacity=".6"/>
+            <text style="fill:var(--accent)" x="40" y="34" font-family="monospace" font-size="13">ΔG(z)</text>
+          </svg>
+          <img src="images/project3.png" alt="Free-energy profile and convergence plot from the ABF workflow" onerror="this.remove()">
+        </div>
+        <div class="body">
+          <div class="meta"><span class="tag">Open source</span><span class="tag">NAMD</span><span class="tag">SLURM</span></div>
+          <h3>NAMD membrane SMD/ABF workflow</h3>
+          <p>A public, scripted workflow from equilibration through steered MD, multi-window ABF setup, HPC job management and convergence and membrane analysis.</p>
+          <a class="more" href="https://github.com/athulvrajeev/namd-membrane-abf-workflow">View on GitHub →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="thumb">
+          <svg viewBox="0 0 320 180" aria-hidden="true">
+            <rect style="fill:var(--accent-soft)" width="320" height="180"/>
+            <rect style="fill:var(--surface);stroke:var(--accent)" x="20" y="62" width="280" height="56" rx="10" stroke-width="2"/>
+            <g style="stroke:var(--accent)" stroke-width="2" fill="none" opacity=".7">
+              <path d="M30 76h50M30 90h70M30 104h50"/><path d="M120 76h60M110 90h90M120 104h60"/><path d="M220 76h50M210 90h70M220 104h50"/>
+            </g>
+            <g style="fill:var(--warm)"><circle cx="96" cy="76" r="4"/><circle cx="160" cy="98" r="4"/><circle cx="246" cy="84" r="4"/><circle cx="196" cy="104" r="4"/></g>
+          </svg>
+          <img src="images/project4.png" alt="COMSOL velocity field and particle trajectories in a microchannel" onerror="this.remove()">
+        </div>
+        <div class="body">
+          <div class="meta"><span class="tag">COMSOL</span><span class="tag">Particle tracing</span><span class="tag">Patents</span></div>
+          <h3>Microfluidic flow and particle tracking</h3>
+          <p>Continuum modelling of flow, drag, Brownian motion and particle trajectories in microscale geometries, alongside microfluidic chip work that led to two granted Indian patents.</p>
+          <a class="more" href="#patents">See patents →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="wrap">
+    <div class="label">Publications</div>
+    <h2 class="section-title">Papers and patents</h2>
+    <ul class="pubs">
+      <li class="pub">
+        <div class="t">Comparing the translocation of the bare and surface-functionalised gold nanoparticle across normal and cancer-mimicking cell membranes</div>
+        <div class="a"><b>Rajeev, A. V.</b>, Singh, G. K., Joshi, H., and Unni, H. N.</div>
+        <div class="v"><em>Physical Chemistry Chemical Physics</em> 28 (2026), 19489–19503 · <a href="https://doi.org/10.1039/D6CP01177B">doi:10.1039/D6CP01177B</a></div>
+      </li>
+      <li class="pub">
+        <div class="t">Molecular Dynamics Simulation of TRPV1-Mediated Nanoparticle Transport Across Normal and Cancer Cell Membrane Models</div>
+        <div class="a"><b>Rajeev, A. V.</b>, Talnikar, V. A., and Unni, H. N.</div>
+        <div class="v"><em>2025 IEEE International Conference on Bioinformatics and Bioengineering (BIBE)</em>, pp. 142–146 (2025) · <a href="https://doi.org/10.1109/BIBE66822.2025.00032">doi:10.1109/BIBE66822.2025.00032</a></div>
+      </li>
+      <li class="pub">
+        <div class="t">Molecular Modelling of Nanoparticle Delivery through Normal and Cancer Cell Membranes <span class="badge">Best Paper Award</span></div>
+        <div class="a"><b>Rajeev, A. V.</b>, Singh, G. K., Joshi, H., and Unni, H. N.</div>
+        <div class="v"><em>Proceedings of the 10th World Congress on Electrical Engineering and Computer Systems and Sciences (EECSS'24)</em>, Barcelona, Paper ICBES 136 (2024) · <a href="https://doi.org/10.11159/icbes24.136">doi:10.11159/icbes24.136</a></div>
+      </li>
+      <li class="pub">
+        <div class="t">Performance and Emission Analysis of a Spark Ignition Engine with Nano Fuel Additives</div>
+        <div class="a"><b>Rajeev, A. V.</b>, Ananthu, R., Chandran, G. S., Vishnu Prasad, K. R., and Deepak, B.</div>
+        <div class="v"><em>Seventh Asian Joint Workshop on Thermophysics and Fluid Science</em>, pp. 155–161 (2018)</div>
+      </li>
+    </ul>
+    <p style="margin:16px 0 0"><a href="https://scholar.google.com/citations?user=e0JPr1oAAAAJ">All publications on Google Scholar →</a></p>
+
+    <h3 class="sub" id="patents">Granted patents</h3>
+    <ul class="pubs">
+      <li class="pub">
+        <div class="t">A Microfluidic Device and a Method for Generating a Mixed Biological Microenvironment</div>
+        <div class="a">Unni, H. N., Mudra, L., Sau, R., and <b>Rajeev, A. V.</b></div>
+        <div class="v">Indian Patent No. 607059 · granted 26 October 2026</div>
+      </li>
+      <li class="pub">
+        <div class="t">Process for Fabrication of Microfluidic Chip and Microfluidic Chip Thereof</div>
+        <div class="a">Kumar, R. S., Ajith, R. R., Mini, R. S., <b>Rajeev, A. V.</b>, and Rahul, R.</div>
+        <div class="v">Indian Patent No. 604160 · granted 28 September 2026</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="label">Experience</div>
+    <h2 class="section-title">Education, teaching and recognition</h2>
+    <div class="two">
+      <div>
+        <h3 class="sub" style="margin-top:0">Education</h3>
+        <ul class="tl">
+          <li><div class="when">2021 – present</div><div class="what">Ph.D., Biomedical Engineering</div><div class="where">Indian Institute of Technology Hyderabad · CGPA 9.17/10 · thesis submission December 2026</div></li>
+          <li><div class="when">2018 – 2020</div><div class="what">M.Tech, Mechanical Engineering (Thermal Science)</div><div class="where">College of Engineering Trivandrum, APJ Abdul Kalam Technological University</div></li>
+          <li><div class="when">2014 – 2018</div><div class="what">B.Tech, Mechanical Engineering</div><div class="where">Mar Baselios College of Engineering and Technology, University of Kerala</div></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub" style="margin-top:0">Teaching</h3>
+        <ul class="plain">
+          <li><b>Teaching Assistant</b>, IIT Hyderabad (2021–present): tutorials, conducting and evaluating examinations, laboratory in-charge.</li>
+          <li>Subjects I can teach: Thermodynamics, Fluid Mechanics, Heat Transfer, Computational Fluid Dynamics.</li>
+        </ul>
+        <h3 class="sub">Awards, talks and training</h3>
+        <ul class="plain">
+          <li><b>Best Paper Award</b>, 11th International Conference on Biomedical Engineering and Systems (ICBES 2024), Barcelona.</li>
+          <li><b>Invited talk</b>, “Advancements in Targeted Drug Delivery”, Faculty Development Programme on <em>Medical Imaging to Biomaterial Design: Modelling and Simulation for Personalized Healthcare</em>, Kochi (2026).</li>
+          <li>INUP-i2i hands-on training on nanofabrication and characterisation, CeNSE, IISc Bengaluru (2023); INUP-i2i familiarisation workshop, IIT Madras (2023).</li>
+          <li>GATE qualified, Mechanical Engineering (2018).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="wrap">
+    <div class="label">Curriculum vitae</div>
+    <h2 class="section-title">CV</h2>
+    <div class="cv-box">
+      <p>My CV has full details of my research experience, technical skills, publications and patents. Referee details are available on request.</p>
+      <a class="btn primary" href="files/Athul_Rajeev_CV.pdf">Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="label">Contact</div>
+    <h2 class="section-title">Get in touch</h2>
+    <p style="margin:0">I am happy to hear about postdoctoral and faculty opportunities and research collaborations.</p>
+    <p style="margin:10px 0 0"><b>Email:</b> <a href="mailto:bm21resch01002@iith.ac.in">bm21resch01002@iith.ac.in</a><br>
+    <b>Based at:</b> Indian Institute of Technology Hyderabad, Telangana, India</p>
+    <div class="links">
+      <a href="https://scholar.google.com/citations?user=e0JPr1oAAAAJ">Google Scholar</a>
+      <a href="https://orcid.org/0009-0008-4748-3931">ORCID</a>
+      <a href="https://github.com/athulvrajeev">GitHub</a>
+      <a href="https://www.linkedin.com/in/athul-vidya-rajeev-801820223">LinkedIn</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Athul V. Rajeev</span>
+    <span>Molecular simulation · Free energy · Biotransport</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var b=document.getElementById('menuBtn'), l=document.getElementById('navList');
+    b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+    l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.setAttribute('aria-expanded',false)}});
+    document.getElementById('yr').textContent=new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
